@@ -1,28 +1,36 @@
 import * as React from "react";
 import "./Board.css";
-import Cell from "./Cell";
+import { Cell } from "./Cell";
+import { InitialBoard } from "./InitialBoard";
+import { sudokuValue } from "./types";
 
-export interface IBoardProps {
-  board: Array<{}>;
+export interface IBoardState {
+  board: sudokuValue[];
 }
 
-export default class Board extends React.Component<IBoardProps, {}> {
+export default class Board extends React.Component<{}, IBoardState> {
   constructor(props: any) {
     super(props);
+
+    this.state = {
+      board: InitialBoard
+    };
   }
 
   public render() {
-    const { board } = this.props;
+    const { board } = this.state;
     return (
       <div className="board">
         {board.map((x, i) => (
-          <Cell key={i} value={1} cellClicked={this.openOptionsDialog} />
+          <Cell key={i} value={x} valueSelected={this.setValue.bind(this, i)} />
         ))}
       </div>
     );
   }
 
-  private openOptionsDialog = () => {
-    alert("Not implemented");
+  private setValue = (i: number, value: sudokuValue) => {
+    const board = [...this.state.board];
+    board[i] = value;
+    this.setState({ board });
   };
 }
