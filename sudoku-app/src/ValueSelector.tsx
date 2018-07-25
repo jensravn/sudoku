@@ -17,12 +17,12 @@ export default class ValueSelector extends React.Component<IProps, {}> {
     return (
       <>
         {sudokuValues.map((x, i) => (
-          <>
-            <Button key={i} onClick={this.props.valueSelected.bind(this, x)}>
+          <React.Fragment key={i}>
+            <Button onClick={this.props.valueSelected.bind(this, x)}>
               {x}
             </Button>
             {i % 3 === 2 && <br />}
-          </>
+          </React.Fragment>
         ))}
       </>
     );
