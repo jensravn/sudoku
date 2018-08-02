@@ -1,24 +1,20 @@
 import * as React from "react";
+import { sudokuValue } from "../types";
 import "./Board.css";
 import { Cell } from "./Cell";
-import { InitialBoard } from "./InitialBoard";
-import { sudokuValue } from "./types";
 
-export interface IBoardState {
+export interface IBoardProps {
   board: sudokuValue[];
+  onSetCell: (id: number, value: sudokuValue) => void;
 }
 
-export default class Board extends React.Component<{}, IBoardState> {
-  constructor(props: any) {
+export default class Board extends React.Component<IBoardProps, {}> {
+  constructor(props: IBoardProps) {
     super(props);
-
-    this.state = {
-      board: InitialBoard
-    };
   }
 
   public render() {
-    const { board } = this.state;
+    const { board } = this.props;
     return (
       <div className="board">
         {board.map((x, i) => (
@@ -29,8 +25,9 @@ export default class Board extends React.Component<{}, IBoardState> {
   }
 
   private setValue = (i: number, value: sudokuValue) => {
-    const board = [...this.state.board];
-    board[i] = value;
-    this.setState({ board });
+    this.props.onSetCell(i, value)
+    // const board = [...this.state.board];
+    // board[i] = value;
+    // this.setState({ board });
   };
 }

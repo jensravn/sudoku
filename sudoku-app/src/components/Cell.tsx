@@ -1,7 +1,7 @@
 import { Popover } from "@material-ui/core";
 import * as React from "react";
+import { sudokuValue } from "../types";
 import "./Cell.css";
-import { sudokuValue } from "./types";
 import ValueSelector from "./ValueSelector";
 
 interface IProps {

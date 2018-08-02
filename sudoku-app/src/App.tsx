@@ -1,9 +1,9 @@
 import * as React from "react";
-import Board from "./Board";
+import BoardContainer from "./containers/BoardContainer";
 
 class App extends React.Component {
   public render() {
-    return <Board />;
+    return <BoardContainer />;
   }
 }
 

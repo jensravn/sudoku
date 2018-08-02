@@ -1,6 +1,6 @@
 import { Button } from "@material-ui/core";
 import * as React from "react";
-import { sudokuValue } from "./types";
+import { sudokuValue } from "../types";
 
 const sudokuValues: sudokuValue[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
